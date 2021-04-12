@@ -1,0 +1,20 @@
+schedule_interval: '@once'
+gcp_conn_id:  google_cloud_default
+gcp_connection_id: google_cloud_default
+bq_conn_id: bigquery_default
+recipient_email_ids: ['aravind.peddola@rackspace.com','udayasankar.neellaqu@rackspace.com']
+sql_file_path: 'run_gdo_nrd_procs'
+
+Load_Partner_Compensation:
+  udsp_etl_cloud_uk_invoice_ordinal:
+    - ['`rax-abo-72-dev`.cloud_uk.udsp_etl_cloud_uk_invoice_ordinal']
+  udsp_etl_cloud_us_invoice_ordinal:
+    - ['`rax-abo-72-dev`.slicehost.udsp_etl_cloud_us_invoice_ordinal']
+  udsp_etl_cloud_email_apps_invoice_ordinal:
+    - ['`rax-abo-72-dev`.net_revenue.udsp_etl_cloud_email_apps_invoice_ordinal']
+  udsp_etl_dedicated_invoice_ordinal:
+    - ['`rax-abo-72-dev`.net_revenue.udsp_etl_dedicated_invoice_ordinal']
+  udsp_populate_partner_compensation_tables:
+    - ['`rax-abo-72-dev`.sales.udsp_populate_partner_compensation_tables']
+  udsp_etl_partner_opportunity_audit:
+    - ['`rax-abo-72-dev`.sales.udsp_etl_partner_opportunity_audit']

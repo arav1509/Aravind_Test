@@ -1,0 +1,61 @@
+schedule_interval: '@once'
+gcp_conn_id:  google_cloud_default
+gcp_connection_id: google_cloud_default
+bq_conn_id: bigquery_default
+recipient_email_ids: ['aravind.peddola@rackspace.com','udayasankar.neellaqu@rackspace.com']
+sql_file_path: 'run_gdo_nrd_procs'
+
+
+NRD_Dim_Billing_Events:
+  udsp_raw_billing_events_load:
+    - ['`rax-staging-dev.stage_one`.udsp_raw_billing_events_load']
+  udsp_stage_billing_events_load:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_stage_billing_events_load']
+  udsp_merge_dim_billing_events:
+    - ['`rax-staging-dev.stage_three_dw`.udsp_merge_dim_billing_events']
+
+NRD_Dim_GL_Product:
+  udsp_raw_gl_product_load:
+    - ['`rax-staging-dev.stage_one`.udsp_raw_gl_product_load']
+  udsp_stage_gl_product:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_stage_gl_product']
+  udsp_merge_dim_gl_product:
+    - ['`rax-staging-dev.stage_three_dw`.udsp_merge_dim_gl_product']
+
+NRD_Dim_Payment_Terms:
+  udsp_raw_payment_terms_load:
+    - ['`rax-staging-dev.stage_one`.udsp_raw_payment_terms_load']
+  udsp_stage_payment_terms_load:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_stage_payment_terms_load']
+  udsp_merge_dim_payment_terms:
+    - ['`rax-staging-dev.stage_three_dw`.udsp_merge_dim_payment_terms']
+
+NRD_Dim_Hier_GL_Account:
+  udsp_insert_dim_hier_gl_account:
+    - ['`rax-staging-dev.stage_three_dw`.udsp_insert_dim_hier_gl_account']
+  udsp_update_dim_hier_gl_account:
+    - ['`rax-staging-dev.stage_three_dw`.udsp_update_dim_hier_gl_account']
+
+NRD_Dim_GL_Account:
+  udsp_nrd_raw_gl_account_load:
+    - ['`rax-staging-dev.stage_one`.udsp_nrd_raw_gl_account_load']
+  udsp_stage_gl_account_load:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_stage_gl_account_load']
+  udsp_merge_dim_gl_account:
+    - ['`rax-staging-dev.stage_three_dw`.udsp_merge_dim_gl_account']
+
+NRD_Dim_Glid_Configuration:
+  udsp_raw_glid_configuration_load:
+    - ['`rax-staging-dev.stage_one`.udsp_raw_glid_configuration_load']
+  udsp_stage_glid_configuration_load:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_stage_glid_configuration_load']
+  udsp_merge_dim_glid_configuration:
+    - ['`rax-staging-dev.stage_three_dw`.udsp_merge_dim_glid_configuration']
+
+NRD_Dim_Item:
+  udsp_raw_item_load:
+    - ['`rax-staging-dev.stage_one`.udsp_raw_item_load']
+  udsp_stage_item_load:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_stage_item_load']
+  udsp_merge_dim_item:
+    - ['`rax-staging-dev.stage_three_dw`.udsp_merge_dim_item']

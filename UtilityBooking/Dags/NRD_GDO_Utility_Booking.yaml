@@ -1,0 +1,10 @@
+schedule_interval: '@once'
+gcp_conn_id:  google_cloud_default
+gcp_connection_id: google_cloud_default
+bq_conn_id: bigquery_default
+recipient_email_ids: ['aravind.peddola@rackspace.com','udayasankar.neellaqu@rackspace.com']
+sql_file_path: 'run_gdo_nrd_procs'
+
+Load_Utility_Bookings_Attributes:
+  udsp_etl_ub_utility_bookings:
+    - ['`rax-abo-72-dev`.sales.udsp_etl_ub_utility_bookings']

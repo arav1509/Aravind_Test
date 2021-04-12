@@ -1,0 +1,113 @@
+schedule_interval: '@once'
+gcp_conn_id:  google_cloud_default
+gcp_connection_id: google_cloud_default
+bq_conn_id: bigquery_default
+recipient_email_ids: ['aravind.peddola@rackspace.com','udayasankar.neellaqu@rackspace.com']
+sql_file_path: 'run_gdo_nrd_procs'
+
+NRD_Stage_Dedicated_Invocie:
+  udsp_stage_nrd_dedicated_invocie_reset_load_flags:
+    - ['`rax-staging-dev.stage_one`.udsp_stage_nrd_dedicated_invocie_reset_load_flags']
+  udsp_brm_dedicated_complete:
+    - ['`rax-staging-dev.stage_one`.udsp_brm_dedicated_complete']
+  udsp_etl_raw_dedicated_brm_rev_daily_incremental:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_raw_dedicated_brm_rev_daily_incremental']
+  udsp_etl_dedicated_brm_inv_detail_tables:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_raw_brm_dedicated_account_profile_load','`rax-staging-dev.stage_one`.udsp_etl_raw_brm_cloud_account_profile_load','`rax-staging-dev.stage_one`.udsp_etl_raw_brm_glid_account_config','`rax-staging-dev.stage_two_dw`.udsp_etl_stage_dedicated_brm_items','`rax-staging-dev.stage_one`.udsp_etl_raw_dedicated_brm_items_aggregate','`rax-staging-dev.stage_one`.udsp_etl_raw_brm_dedicated_invoice_aggregate_total','`rax-staging-dev.stage_two_dw`.udsp_etl_stage_payment_term','`rax-staging-dev.stage_one`.udsp_etl_raw_brm_dedicated_billing_daily_stage_master']
+  udsp_etl_refresh_net_revenue_oracle_ods_tables_current_load:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_refresh_net_revenue_oracle_ods_tables_current_load']
+  udsp_complete_net_revenue_oracle_ods_source_tables:
+    - ['`rax-staging-dev.stage_one`.udsp_complete_net_revenue_oracle_ods_source_tables']
+  udsp_etl_stage_master_dedicated_inv_event_detail_incremental:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_etl_stage_dedicated_gl_codes_brm','`rax-staging-dev.stage_two_dw`.udsp_etl_stage_dedicated_gl_products_brm','`rax-staging-dev.stage_two_dw`.udsp_etl_stage_dedicated_inv_event_detail_incremental']
+  udsp_stage_nrd_dedicated_invocie_updating_flag_in_load_flag_table:
+    - ['`rax-staging-dev.stage_one`.udsp_stage_nrd_dedicated_invocie_updating_flag_in_load_flag_table']
+
+NRD_Stage_Dedicated_Invoice_Audit:
+  udsp_etl_raw_brm_dedicated_invoice_line_item_audit:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_raw_brm_dedicated_invoice_line_item_audit']
+  udsp_etl_raw_dedicated_brm_rev_daily_incremental_audit:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_raw_dedicated_brm_rev_daily_incremental_audit']
+  udsp_etl_raw_brm_dedicated_billing_daily_stage_master_audit:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_raw_brm_dedicated_billing_daily_stage_master_audit']
+  udsp_etl_stage_dedicated_inv_event_detail_incremental_audit:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_etl_stage_dedicated_inv_event_detail_incremental_audit']
+
+NRD_Stage_Update_Invoice_Date:
+  udsp_etl_raw_brm_invoice_aggregate_total:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_raw_brm_invoice_aggregate_total']
+  udsp_etl_stage_update_dedicated_invoice_null_bill_no:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_etl_stage_update_dedicated_invoice_null_bill_no']
+
+
+
+NRD_Stage_Cloud_Invoice:
+  stage_nrd_cloud_invocie_reset_load_flags:
+    - ['`rax-staging-dev.stage_one`.stage_nrd_cloud_invocie_reset_load_flags']
+  udsp_etl_refresh_brm_tables_current_load:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_refresh_brm_tables_current_load']
+  udsp_brm_complete:
+    - ['`rax-staging-dev.stage_one`.udsp_brm_complete']
+  udsp_insert_load_brm_tables_duration_log:
+    - ['`rax-staging-dev.stage_one`.udsp_insert_load_brm_tables_duration_log']
+  udsp_bill_invoice_staging_onetime:
+    - ['`rax-staging-dev.stage_one`.udsp_bill_invoice_staging_onetime']
+  udsp_update_load_brm_tables_duration_log:
+    - ['`rax-staging-dev.stage_one`.udsp_update_load_brm_tables_duration_log']
+  udsp_etl_stage_cloud_brm_items:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_etl_stage_cloud_brm_items']
+  udsp_etl_raw_cloud_brm_items_aggregate:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_raw_cloud_brm_items_aggregate']
+  udsp_etl_load_raw_invitemeventdetail_daily_stage:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_load_raw_invitemeventdetail_daily_stage']
+  udsp_etl_load_stage_invitemeventdetail_incremental:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_etl_load_stage_invitemeventdetail_incremental']
+  stage_nrd_cloud_invocie_update_load_flags:
+    - ['`rax-staging-dev.stage_one`.stage_nrd_cloud_invocie_update_load_flags']
+
+NRD_Stage_Cloud_Invoice_Audit:
+  udsp_etl_raw_brm_invoice_line_item_audit:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_raw_brm_invoice_line_item_audit']
+  udsp_raw_cloud_bill_invoice_staging_audit:
+    - ['`rax-staging-dev.stage_one`.udsp_raw_cloud_bill_invoice_staging_audit']
+  udsp_etl_raw_load_invitemeventdetail_daily_audit_stage:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_raw_load_invitemeventdetail_daily_audit_stage']
+  udsp_etl_raw_load_invitemeventdetail_audit_incremental:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_raw_load_invitemeventdetail_audit_incremental']
+
+
+NRD_Stage_Email_Apps_Invoice:
+  stage_nrd_email_apps_invoice_reset_load_flags:
+    - ['`rax-staging-dev.stage_one`.stage_nrd_email_apps_invoice_reset_load_flags']
+  udsp_complete_email_apps_invoicing_brm_ods_tables:
+    - ['`rax-staging-dev.stage_one`.udsp_complete_email_apps_invoicing_brm_ods_tables']
+  udsp_etl_email_apps_invoicing_report_tables:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_raw_report_exchange_rate','`rax-staging-dev.stage_two_dw`.udsp_etl_stage_cloud_email_apps_gl_codes','`rax-staging-dev.stage_two_dw`.udsp_load_stage_currency_codes','`rax-staging-dev.stage_two_dw`.udsp_etl_stage_email_apps_inv_event_detail']
+  stage_nrd_email_apps_invoice_updating_flag_in_load_flag_table:
+    - ['`rax-staging-dev.stage_one`.stage_nrd_email_apps_invoice_updating_flag_in_load_flag_table']
+
+NRD_Stage_Xref_Tables:
+  udsp_etl_load_xref_tables:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_etl_load_xref_tables']
+
+NRD_Stage_Cloud_Hosting_Products:
+  udsp_stage_cloud_hosting_products:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_stage_cloud_hosting_products']
+  udsp_send_alert_stage_cloud_hosting_products_added:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_send_alert_stage_cloud_hosting_products_added']
+
+NRD_Stage_Update_Is_Transaction:
+  udsp_update_is_transaction_successful_cloud:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_update_is_transaction_successful_cloud']
+  udsp_update_is_transaction_successful_dedicated:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_update_is_transaction_successful_dedicated']
+
+NRD_Stage_Credit_BRM:
+  udsp_etl_load_raw_brm_credit_daily_stage:
+    - ['`rax-staging-dev.stage_one`.udsp_etl_load_raw_brm_credit_daily_stage']
+  udsp_etl_load_stage_credits_detail_incremental:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_etl_load_stage_credits_detail_incremental']
+
+NRD_Stage_Dim_Invoice_And_Attributes:
+  udsp_load_dim_invoice_and_attributes:
+    - ['`rax-staging-dev.stage_two_dw`.udsp_load_dim_invoice_and_attributes']

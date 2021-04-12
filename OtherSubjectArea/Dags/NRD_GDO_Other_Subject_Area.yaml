@@ -1,0 +1,37 @@
+schedule_interval: '@once'
+gcp_conn_id:  google_cloud_default
+gcp_connection_id: google_cloud_default
+bq_conn_id: bigquery_default
+recipient_email_ids: ['aravind.peddola@rackspace.com','udayasankar.neellaqu@rackspace.com']
+sql_file_path: 'run_gdo_nrd_procs'
+
+Load_Sales_Cloud_Account_Contact_Tables:
+  udsp_cloud_opp_daily_snapshot_complete_cloud_account_contact_tables:
+    - ['`rax-abo-72-dev`.sales.udsp_cloud_opp_daily_snapshot_complete_cloud_account_contact_tables']
+  udsp_contact_tables_complete:
+    - ['`rax-abo-72-dev`.sales.udsp_contact_tables_complete']
+  udsp_etl_cloud_account_contact_info_tables:
+    - ['`rax-abo-72-dev`.sales.udsp_etl_cloud_account_contact_info_tables']
+
+Load_Cloud_Account_Contact_Tables:
+  udsp_etl_refresh_cms_tables_current_load:
+    - ['`rax-abo-72-dev`.slicehost.udsp_etl_refresh_cms_tables_current_load']
+  udsp_cms_complete:
+    - ['`rax-abo-72-dev`.slicehost.udsp_cms_complete']
+  udsp_etl_contact_tables_us:
+    - ['`rax-abo-72-dev`.slicehost.udsp_etl_contact_tables_us']
+  udsp_etl_contact_tables_uk:
+    - ['`rax-abo-72-dev`.cloud_uk.udsp_etl_contact_tables_uk']
+
+Load_Reporting_Tables:
+  udsp_etl_report_tables:
+    - ['`rax-abo-72-dev`.report_tables.udsp_etl_report_tables']
+
+Load_Sales_Opps_BillFile_Tables:
+  udsp_etl_sales_billfile_report_tables:
+    - ['`rax-abo-72-dev`.sales.udsp_etl_sales_billfile_report_tables']
+  udsp_etl_cloud_opp_billfile_rptbl_all:
+    - ['`rax-abo-72-dev`.sales.udsp_etl_cloud_opp_billfile_rptbl_all']
+  udsp_etl_cloud_opp_billfile_booking_rptbl_insert_all:
+    - ['`rax-abo-72-dev`.sales.udsp_etl_cloud_opp_billfile_booking_rptbl_insert_all']
+    

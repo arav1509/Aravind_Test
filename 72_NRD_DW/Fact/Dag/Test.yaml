@@ -1,0 +1,51 @@
+schedule_interval: '@once'
+gcp_conn_id:  google_cloud_default
+gcp_connection_id: google_cloud_default
+bq_conn_id: bigquery_default
+recipient_email_ids: ['aravind.peddola@rackspace.com']
+sql_file_path: 'run_gdo_nrd_procs'
+
+
+NRD_Fact_Invoice_Event_Detail_Dedicated_Daily_Load:
+  udsp_etl_load_fact_invoice_event_detail_dedicated_daily_load:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_load_fact_invoice_event_detail_dedicated_daily_load']
+
+NRD_Fact_Invoice_Line_Item_Dedicated_Daily_Load:
+  udsp_etl_fact_invoice_line_item_dedicated_adjustment:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_fact_invoice_line_item_dedicated_adjustment']
+  udsp_etl_fact_invoice_line_item_dedicated_invoice:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_fact_invoice_line_item_dedicated_invoice']
+  udsp_etl_fact_invoice_line_item_dedicated_load_inv_and_adj:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_fact_invoice_line_item_dedicated_load_inv_and_adj']
+  udsp_etl_fact_invoice_line_item_dedicated_prepay:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_fact_invoice_line_item_dedicated_prepay']
+
+NRD_Fact_Invoice_Event_Detail_Cloud_Daily_Load:
+  udsp_etl_load_fact_invoice_event_detail_cloud_daily_load:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_load_fact_invoice_event_detail_cloud_daily_load']
+
+NRD_Fact_Invoice_Line_Item_Cloud_Daily_Load:
+  udsp_etl_fact_invoice_line_item_cloud_inv_and_adj:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_fact_invoice_line_item_cloud_inv_and_adj']
+
+NRD_Fact_Invoice_Event_Detail_EmailApps_Daily_Load:
+  udsp_etl_load_fact_invoice_event_detail_emailapps_daily_load:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_load_fact_invoice_event_detail_emailapps_daily_load']
+
+NRD_Fact_Invoice_Line_Item_EmailApps_Daily_Load:
+  udsp_etl_fact_invoice_line_item_email_and_apps_adjustment:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_fact_invoice_line_item_email_and_apps_adjustment']
+  udsp_etl_fact_invoice_line_item_email_and_apps_invoice:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_fact_invoice_line_item_email_and_apps_invoice']
+  udsp_etl_fact_invoice_line_item_email_and_apps_load_inv_and_adj:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_fact_invoice_line_item_email_and_apps_load_inv_and_adj']
+  udsp_etl_fact_invoice_line_item_email_and_apps_prepay:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_etl_fact_invoice_line_item_email_and_apps_prepay']
+
+NRD_Fact_NRD_Lineitem_Consolidated:
+  udsp_load_fact_invoice_line_item_detail:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_load_fact_invoice_line_item_detail']
+
+NRD_Fact_NRD_Net_Revenue:
+  udsp_load_fact_net_revenue:
+    - ['`rax-datamart-dev.stage_three_dw_nrd`.udsp_load_fact_net_revenue']
